@@ -7,7 +7,7 @@ using this library requires
 
 (check test.sh)
 
-CURI_Data.CodecURI exposes:
+#### CURI_Data.CodecURI exposes:
 
 urlEncodedGet, urlEncodedPost : String -> [(String, String)] -> [(String, String)] -> Bool -> Request String
 urlEncoded{Get|Post} url qry headers shouldEncodeNames
@@ -18,7 +18,7 @@ urlEncoded{Get|Post} url qry headers shouldEncodeNames
 
 ------------------
 
-### CURI_Data.HeaderEncodings exposes:
+#### CURI_Data.HeaderEncodings exposes:
 
 RFC2231 compliant functions to encode non-latin1 parameter values in headers. 
 
@@ -30,13 +30,13 @@ encodeHeaderAttWrapped lineTopSize mbLang name value
 
 ------------------
 
-### CURI_Data.CharExtra 
+#### CURI_Data.CharExtra 
 
 (ord, chr)
 
 ------------------
 
-### CURI_Data.Util 
+#### CURI_Data.Util 
 
 (fromMaybe, lists unfoldr, strings chunksOf)
 
