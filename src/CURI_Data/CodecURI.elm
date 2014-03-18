@@ -21,7 +21,6 @@ urlEncodedGet : String -> [(String, String)] -> [(String, String)] -> Bool -> Re
 urlEncodedGet url qry headers shouldEncodeNames = 
 
   if | url `S.contains` "?" -> Native.Error.raise ("urlEncodedGet: qry params must be specified apart : " ++ url)
-     
      | otherwise -> 
         let encPair (k, v) = 
               if shouldEncodeNames 
@@ -40,7 +39,6 @@ urlEncodedPost : String -> [(String, String)] -> [(String, String)] -> Bool -> R
 urlEncodedPost url qry headers shouldEncodeNames = 
   
   if | url `S.contains` "?" -> Native.Error.raise ("urlEncodedPost: qry params must be specified apart : " ++ url)
-     
      | otherwise -> 
         let encPair (k, v) = 
               if shouldEncodeNames 
