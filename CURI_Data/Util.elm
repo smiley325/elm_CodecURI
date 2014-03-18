@@ -1,7 +1,11 @@
 module CURI_Data.Util where
 {-| not so uncommmon utility routines
+
+# Miscellaneous
+@docs fromMaybe, unfoldr, chunksOf
 -}
 import String as S
+
 {-| missing in the Maybe library -}
 fromMaybe : a -> Maybe a -> a
 fromMaybe default mb = 

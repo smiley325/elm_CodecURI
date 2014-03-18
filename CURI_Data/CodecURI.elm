@@ -1,7 +1,13 @@
 module CURI_Data.CodecURI where
-{-| This library brings url encoded Request String for GET and Post
+{-| This library brings url encoded requests for GET and Post
 
 as well as JavaScript encodeURI, encodeURIComponent and decode.. correspondents 
+
+# Url encoded Requests
+@docs urlEncodedGet, urlEncodedPost
+
+# Interface with JS
+@docs encodeURI, encodeURIComponent, decodeURI, decodeURIComponent
 -}
 
 import Native.CodecURI

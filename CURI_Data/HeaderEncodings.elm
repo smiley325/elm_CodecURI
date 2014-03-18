@@ -1,6 +1,10 @@
 module CURI_Data.HeaderEncodings where
 {-| Headers attribute parameter encoding following RFC2231 
+
+# RFC2231 attrib name, value encoding
+@docs encodeHeaderAttUnwrapped, encodeHeaderAttWrapped 
 -}
+
 import CURI_Data.CodecURI (encodeURI)
 import String as S
 import Maybe (Maybe, isJust)
