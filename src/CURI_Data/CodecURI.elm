@@ -18,7 +18,6 @@ decodeURIComponent : String -> String
 decodeURIComponent = Native.CodecURI.decodeURIComponent
 
 urlEncodedGet : String -> [(String, String)] -> [(String, String)] -> Bool -> Request String
-
 urlEncodedGet url qry headers shouldEncodeNames = 
 
   if | url `S.contains` "?" -> Native.Error.raise ("urlEncodedGet: qry params must be specified apart : " ++ url)
@@ -26,7 +25,7 @@ urlEncodedGet url qry headers shouldEncodeNames =
      | otherwise -> 
         let encPair (k, v) = 
               if shouldEncodeNames 
-                 then (encodeURIComponent k, encodeURIComponent v)
+                 then (encodeURI k, encodeURIComponent v)
                  else (k, encodeURIComponent v)
             qryNameValue (k, v) = k ++ "=" ++ v
             encQry = concat <| intersperse "&" <| map (qryNameValue . encPair) qry
@@ -38,7 +37,6 @@ urlEncodedGet url qry headers shouldEncodeNames =
         in request "GET" encUrlWithQry "" headers    
 
 urlEncodedPost : String -> [(String, String)] -> [(String, String)] -> Bool -> Request String
-
 urlEncodedPost url qry headers shouldEncodeNames = 
   
   if | url `S.contains` "?" -> Native.Error.raise ("urlEncodedPost: qry params must be specified apart : " ++ url)
@@ -46,7 +44,7 @@ urlEncodedPost url qry headers shouldEncodeNames =
      | otherwise -> 
         let encPair (k, v) = 
               if shouldEncodeNames 
-                 then (encodeURIComponent k, encodeURIComponent v)
+                 then (encodeURI k, encodeURIComponent v)
                  else (k, encodeURIComponent v)
             qryNameValue (k, v) = k ++ "=" ++ v
             encQry = concat <| intersperse "&" <| map (qryNameValue . encPair) qry
