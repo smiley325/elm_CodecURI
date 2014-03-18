@@ -1,5 +1,6 @@
 module CURI_Data.CharExtra where
-
+{-| Extra library for non-existant ord and chr
+-}
 import Native.CharExtra
 import Native.Error
 

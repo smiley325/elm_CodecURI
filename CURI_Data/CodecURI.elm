@@ -1,22 +1,34 @@
 module CURI_Data.CodecURI where
+{-| This library brings url encoded Request String for GET and Post
+
+as well as JavaScript encodeURI, encodeURIComponent and decode.. correspondents 
+-}
 
 import Native.CodecURI
 import Http (Request, request)
 import String as S
 import Native.Error
 
+{-| elm interface to Javascript function -} 
 encodeURI : String -> String
 encodeURI = Native.CodecURI.encodeURI
 
+{-| elm interface to Javascript function -} 
 encodeURIComponent : String -> String
 encodeURIComponent = Native.CodecURI.encodeURIComponent
 
+{-| elm interface to Javascript function -} 
 decodeURI : String -> String
 decodeURI = Native.CodecURI.decodeURI
 
+{-| elm interface to Javascript function -} 
 decodeURIComponent : String -> String
 decodeURIComponent = Native.CodecURI.decodeURIComponent
 
+{-| build an encoded GET Request 
+    url must not include a query part
+    shouldEncodeNames is for encoding non latin1 parameter names
+-} 
 urlEncodedGet : String -> [(String, String)] -> [(String, String)] -> Bool -> Request String
 urlEncodedGet url qry headers shouldEncodeNames = 
 
@@ -35,6 +47,10 @@ urlEncodedGet url qry headers shouldEncodeNames =
                   )
         in request "GET" encUrlWithQry "" headers    
 
+{-| build an encoded GET Request 
+    url must not include a query part
+    shouldEncodeNames is for encoding non latin1 parameter names
+-} 
 urlEncodedPost : String -> [(String, String)] -> [(String, String)] -> Bool -> Request String
 urlEncodedPost url qry headers shouldEncodeNames = 
   

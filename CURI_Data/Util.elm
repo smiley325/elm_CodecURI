@@ -1,20 +1,22 @@
 module CURI_Data.Util where
-
+{-| not so uncommmon utility routines
+-}
 import String as S
--- utilities
-
+{-| missing in the Maybe library -}
 fromMaybe : a -> Maybe a -> a
 fromMaybe default mb = 
   case mb of
     Just v -> v
     Nothing -> default
 
+{-| missing in the List library -}
 unfoldr : (b -> Maybe (a, b)) -> b -> [a]
 unfoldr f b  =
   case f b of
    Just (a, new_b) -> a :: unfoldr f new_b
    Nothing        -> []    
 
+{-| coud be added to the String library-}   
 chunksOf : Int -> String -> [String]
 chunksOf size str =
   let f s = 

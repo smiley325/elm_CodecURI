@@ -1,14 +1,13 @@
 module CURI_Data.HeaderEncodings where
-{- Headers attribute parameter encoding following RFC2231 -}
-
+{-| Headers attribute parameter encoding following RFC2231 
+-}
 import CURI_Data.CodecURI (encodeURI)
 import String as S
 import Maybe (Maybe, isJust)
 import CURI_Data.Util (fromMaybe, chunksOf)
 import CURI_Data.CharExtra (ord)
 
--- one line encoding of name value pair
-
+{-| one line encoding of name value pair -}
 encodeHeaderAttUnwrapped : Maybe String -> String -> String -> String
 encodeHeaderAttUnwrapped  mbLang name value =
   let isNotLatin1 ch = ord ch > 255
@@ -20,8 +19,7 @@ encodeHeaderAttUnwrapped  mbLang name value =
         else name ++ "=\"" ++ value ++ "\""
 
         
--- encodeHeaderAttWrapped result begins with "\n"        
-
+{-| encodeHeaderAttWrapped result begins with "\n" -}       
 encodeHeaderAttWrapped : Int -> Maybe String -> String -> String -> String        
 encodeHeaderAttWrapped lineTopSize mbLang name value =
   let isNotLatin1 ch = ord ch > 255
