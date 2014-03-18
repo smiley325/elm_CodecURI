@@ -34,6 +34,6 @@ encodeHeaderAttWrapped lineTopSize mbLang name value
 
 ------------------
 
-### CURI_Data.Util (fromMaybe, L.unfoldr, S.chunksOf)
+### CURI_Data.Util (fromMaybe, lists unfoldr, strings chunksOf)
 
 
