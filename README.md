@@ -3,7 +3,7 @@
 tests run: . ./test.sh TestCharExtra TestEncodeURI TestHeaderEnc
 
 using this library requires 
-   --scripts=path/to/src/Native/CURI-runtime.js 
+   --scripts=path/to/Native/CURI-runtime.js 
 
 (check test.sh)
 

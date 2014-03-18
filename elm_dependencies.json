@@ -1,9 +1,9 @@
 { "version": "0.1"
 , "summary": "experimental library for url_encoding HTTP.send Get/Post requests"
-, "description": "CodecURI exposes Javascript's {encode|decode}URI[Component] plus mine's urlEncoded{Get|Post}. There are JS Native modules in src/Native/CURI-runtime.js to be added with --scripts"
+, "description": "CodecURI exposes Javascript's {encode|decode}URI[Component] plus mine's urlEncoded{Get|Post}. There are JS Native modules in Native/CURI-runtime.js to be added with --scripts"
 , "license": "BSD3"
 , "repository": "https://github.com/griba2001/elm_CodecURI.git"
-, "exposed-modules": ["src/CURI_Data.CodecURI", "src/CURI_Data.HeaderEncodings", "src/CURI_Data.CharExtra", "src/CURI_Data.Util"]
+, "exposed-modules": ["CURI_Data.CodecURI", "CURI_Data.HeaderEncodings", "CURI_Data.CharExtra", "CURI_Data.Util"]
 , "elm-version": "0.11"
 , "dependencies":{}
 }
