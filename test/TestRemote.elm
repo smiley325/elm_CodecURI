@@ -7,7 +7,7 @@ import JavaScript as JS
 import JavaScript (JSString)
 import CURI_Data.CodecURI as C
 
-(fld1Elem, fld1Status) = Input.field "enter numeric"
+(fld1Elem, fld1Status) = Input.field "enter problematic characters"
 
 url = "http://localhost:3000/echo-status"
 
