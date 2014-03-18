@@ -31,8 +31,10 @@ decodeURI = Native.CodecURI.decodeURI
 decodeURIComponent : String -> String
 decodeURIComponent = Native.CodecURI.decodeURIComponent
 
-{-| build an encoded GET Request 
+{-| urlEncodedGet url qry headers shouldEncodeNames
+
     url must not include a query part
+    
     shouldEncodeNames is for encoding non latin1 parameter names
 -} 
 urlEncodedGet : String -> [(String, String)] -> [(String, String)] -> Bool -> Request String
@@ -53,9 +55,7 @@ urlEncodedGet url qry headers shouldEncodeNames =
                   )
         in request "GET" encUrlWithQry "" headers    
 
-{-| build an encoded GET Request 
-    url must not include a query part
-    shouldEncodeNames is for encoding non latin1 parameter names
+{-| urlEncodedPost url qry headers shouldEncodeNames
 -} 
 urlEncodedPost : String -> [(String, String)] -> [(String, String)] -> Bool -> Request String
 urlEncodedPost url qry headers shouldEncodeNames = 

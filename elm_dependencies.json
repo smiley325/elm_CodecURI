@@ -1,4 +1,4 @@
-{ "version": "0.1"
+{ "version": "0.2.1"
 , "summary": "experimental library for url_encoding HTTP.send Get/Post requests"
 , "description": "CodecURI exposes Javascript's {encode|decode}URI[Component] plus mine's urlEncoded{Get|Post}. There are JS Native modules in Native/CURI-runtime.js to be added with --scripts"
 , "license": "BSD3"

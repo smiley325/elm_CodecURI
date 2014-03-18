@@ -20,7 +20,7 @@ unfoldr f b  =
    Just (a, new_b) -> a :: unfoldr f new_b
    Nothing        -> []    
 
-{-| coud be added to the String library-}   
+{-| could be added to the String library-}   
 chunksOf : Int -> String -> [String]
 chunksOf size str =
   let f s = 
