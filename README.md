@@ -30,10 +30,14 @@ encodeHeaderAttWrapped lineTopSize mbLang name value
 
 ------------------
 
-### CURI_Data.CharExtra (ord, chr)
+### CURI_Data.CharExtra 
+
+(ord, chr)
 
 ------------------
 
-### CURI_Data.Util (fromMaybe, lists unfoldr, strings chunksOf)
+### CURI_Data.Util 
+
+(fromMaybe, lists unfoldr, strings chunksOf)
 
 
