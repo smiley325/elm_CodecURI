@@ -10,6 +10,7 @@ using this library requires
 #### CURI_Data.CodecURI exposes:
 
 urlEncodedGet, urlEncodedPost : String -> [(String, String)] -> [(String, String)] -> Bool -> Request String
+
 urlEncoded{Get|Post} url qry headers shouldEncodeNames
 
 {encode|decode}URI : String -> String
@@ -23,9 +24,12 @@ urlEncoded{Get|Post} url qry headers shouldEncodeNames
 RFC2231 compliant functions to encode non-latin1 parameter values in headers. 
 
 encodeHeaderAttUnwrapped : Maybe String -> String -> String -> String
+
 encodeHeaderAttUnwrapped  mbLang name value
 
+
 encodeHeaderAttWrapped : Int -> Maybe String -> String -> String -> String        
+
 encodeHeaderAttWrapped lineTopSize mbLang name value
 
 ------------------
