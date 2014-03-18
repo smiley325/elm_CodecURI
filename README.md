@@ -21,7 +21,7 @@ urlEncoded{Get|Post} url qry headers shouldEncodeNames
 
 #### CURI_Data.HeaderEncodings exposes:
 
-RFC2231 compliant functions to encode non-latin1 parameter values in headers. 
+[RFC2231](https://tools.ietf.org/html/rfc2231) compliant functions to encode non-latin1 parameter values in headers. 
 
 encodeHeaderAttUnwrapped : Maybe String -> String -> String -> String
 
