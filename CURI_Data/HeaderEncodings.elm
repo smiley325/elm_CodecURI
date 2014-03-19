@@ -8,7 +8,7 @@ module CURI_Data.HeaderEncodings where
 import CURI_Data.CodecURI (encodeURI)
 import String as S
 import Maybe (Maybe, isJust)
-import CURI_Data.Util (fromMaybe, chunksOf, strSplitAt)
+import CURI_Data.Util (fromMaybe)
 import CURI_Data.CharExtra (ord)
 import open CURI_Data.HeaderEncodingsPrivate
 
