@@ -47,5 +47,5 @@ encodeHeaderAttWrapped lineTopSize mbLang name value =
         else let valueSpace = (lineTopSize - S.length name - 5) -- 5 for "*NN*="
                  charsetLangPrefix = "utf-8'" ++ lang ++ "'"
                  (firstLine, valueContinuation) = encodeHeaderAttWrapped_FirstLine valueSpace charsetLangPrefix encNeeded name value    
-             in  firstLine ++ encodeHeaderAttWrapped_ContinuationLines valueSpace charsetLangPrefix encNeeded name valueContinuation 
+             in  firstLine ++ encodeHeaderAttWrapped_ContinuationLines valueSpace encNeeded name valueContinuation 
              

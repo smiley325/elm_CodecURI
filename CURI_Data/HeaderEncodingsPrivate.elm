@@ -19,8 +19,8 @@ encodeHeaderAttWrapped_FirstLine valueSpace charsetLangPrefix encNeeded name val
              firstLine = "\n" ++ name ++ "*0=\"" ++ valuePrefix ++ "\""
          in (firstLine, valueSuffix)    
              
-encodeHeaderAttWrapped_ContinuationLines : Int -> String -> Bool -> String -> String -> String
-encodeHeaderAttWrapped_ContinuationLines valueSpace charsetLangPrefix encNeeded name valueContinuation =
+encodeHeaderAttWrapped_ContinuationLines : Int -> Bool -> String -> String -> String
+encodeHeaderAttWrapped_ContinuationLines valueSpace encNeeded name valueContinuation =
   if encNeeded
      then let chunkSize = valueSpace `div` 3 -- to prevent %dd tripling char space
               chunks = chunksOf chunkSize valueContinuation
