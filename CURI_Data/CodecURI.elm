@@ -37,7 +37,7 @@ decodeURIComponent = Native.CodecURI.decodeURIComponent
     
     shouldEncodeNames is for encoding non ASCII parameter names
     
-    for this to work, server side must add the following header "Access-Control-Allow-Origin:*"
+    for this to work, server side response must add the following header "Access-Control-Allow-Origin:*"
 -} 
 urlEncodedGet : String -> [(String, String)] -> [(String, String)] -> Bool -> Request String
 urlEncodedGet url qry headers shouldEncodeNames = 
@@ -59,7 +59,7 @@ urlEncodedGet url qry headers shouldEncodeNames =
 
 {-| urlEncodedPost url qry headers shouldEncodeNames
 
-for this to work, server side must add the following headers 
+for this to work, server side response must add the following headers 
 
 "Access-Control-Allow-Origin:*", "Access-Control-Allow-Methods: GET, POST"
 -} 
