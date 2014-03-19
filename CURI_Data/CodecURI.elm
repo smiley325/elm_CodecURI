@@ -35,7 +35,7 @@ decodeURIComponent = Native.CodecURI.decodeURIComponent
 
     url must not include a query part
     
-    shouldEncodeNames is for encoding non latin1 parameter names
+    shouldEncodeNames is for encoding non ASCII parameter names
     
     for this to work, server side must add the following header "Access-Control-Allow-Origin:*"
 -} 
