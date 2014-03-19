@@ -40,7 +40,7 @@ encodeHeaderAttWrapped lineTopSize mbLang name value =
       unwrapped = if encNeeded
                     then let encodedValue = concat <| intersperse "\'" ["utf-8", lang, encodeURI value]
                          in name ++ "*=" ++ encodedValue
-                    else name ++ "=" ++ value
+                    else name ++ "=\"" ++ value ++ "\""
                     
   in if S.length unwrapped < lineTopSize
         then "\n" ++ unwrapped
