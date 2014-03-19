@@ -1,6 +1,6 @@
-{ "version": "0.2.4"
+{ "version": "0.2.5"
 , "summary": "experimental library for url_encoding HTTP.send Get/Post requests"
-, "description": "CodecURI exposes Javascript's {encode|decode}URI[Component] plus urlEncoded{Get|Post}. 
+, "description": "CodecURI exposes Javascript's {encode|decode}URI[Component] and adds urlEncoded{Get|Post}. 
 
 HeaderEncodings exposes RFC2231(https://tools.ietf.org/html/rfc2231) conformant encodeHeaderAtt{Unwrapped|Wrapped}
 
