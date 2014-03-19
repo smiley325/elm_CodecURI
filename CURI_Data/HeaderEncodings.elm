@@ -8,8 +8,9 @@ module CURI_Data.HeaderEncodings where
 import CURI_Data.CodecURI (encodeURI)
 import String as S
 import Maybe (Maybe, isJust)
-import CURI_Data.Util (fromMaybe, chunksOf)
+import CURI_Data.Util (fromMaybe, chunksOf, strSplitAt)
 import CURI_Data.CharExtra (ord)
+import open CURI_Data.HeaderEncodingsPrivate
 
 {-| encodeHeaderAttUnwrapped  mbLang name value
 
@@ -25,7 +26,8 @@ encodeHeaderAttUnwrapped  mbLang name value =
              in name ++ "*=" ++ v
         else name ++ "=\"" ++ value ++ "\""
 
-        
+-------------------------------------------        
+
 {-| encodeHeaderAttWrapped lineTopSize mbLang name value
 
 line-wrapped version for long param. values, result begins with newline
@@ -35,29 +37,15 @@ encodeHeaderAttWrapped lineTopSize mbLang name value =
   let isNotLatin1 ch = ord ch > 255
       encNeeded = S.any isNotLatin1 value
       lang = fromMaybe "" mbLang
-      unwrappedValue = if encNeeded 
-                          then concat <| intersperse "\'" ["utf-8", lang, encodeURI value]
-                          else value
-                        
       unwrapped = if encNeeded
-                    then name ++ "*=" ++ unwrappedValue
+                    then let encodedValue = concat <| intersperse "\'" ["utf-8", lang, encodeURI value]
+                         in name ++ "*=" ++ encodedValue
                     else name ++ "=" ++ value
                     
   in if S.length unwrapped < lineTopSize
-        then unwrapped
-        else let valueSpace = (lineTopSize - S.length name - 5)
-                 valueData = if encNeeded 
-                                then concat <| intersperse "\'" ["utf-8", lang, value]
-                                else value
-                 chunkSize = if encNeeded 
-                                then valueSpace `div` 3
-                                else valueSpace
-                 chunks = chunksOf chunkSize valueData
-                 chunksWithPos = zip chunks [0 .. (length chunks)]
-                 showContinuation (chunk, pos) = 
-                   let prefix = "\n" ++ name ++ "*" ++ show pos
-                       suffix = if encNeeded 
-                                  then "*=" ++ encodeURI chunk
-                                  else "=\"" ++ chunk ++ "\""
-                   in prefix ++ suffix  
-             in concatMap showContinuation chunksWithPos    
+        then "\n" ++ unwrapped
+        else let valueSpace = (lineTopSize - S.length name - 5) -- 5 for "*NN*="
+                 charsetLangPrefix = "utf-8'" ++ lang ++ "'"
+                 (firstLine, valueContinuation) = encodeHeaderAttWrapped_FirstLine valueSpace charsetLangPrefix encNeeded name value    
+             in  firstLine ++ encodeHeaderAttWrapped_ContinuationLines valueSpace charsetLangPrefix encNeeded name valueContinuation 
+             

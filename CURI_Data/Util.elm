@@ -21,10 +21,14 @@ unfoldr f b  =
    Nothing        -> []    
 
 {-| could be added to the String library-}   
+strSplitAt : Int -> String -> (String, String)   
+strSplitAt n s = (S.left n s, S.dropLeft n s)
+
+{-| could be added to the String library-}   
 chunksOf : Int -> String -> [String]
 chunksOf size str =
   let f s = 
-    let (prefix, suffix) = (S.left size s, S.dropLeft size s)
+    let (prefix, suffix) = strSplitAt size s
     in if S.isEmpty prefix 
          then Nothing
          else Just (prefix, suffix)
