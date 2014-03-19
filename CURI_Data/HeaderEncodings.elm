@@ -1,7 +1,7 @@
 module CURI_Data.HeaderEncodings where
-{-| Headers attribute parameter encoding following RFC2231 
+{-| Headers attribute parameter value encoding following [RFC2231](https://tools.ietf.org/html/rfc2231) 
 
-# RFC2231 attrib name, value encoding
+# RFC2231 attrib value encoding
 @docs encodeHeaderAttUnwrapped, encodeHeaderAttWrapped 
 -}
 
