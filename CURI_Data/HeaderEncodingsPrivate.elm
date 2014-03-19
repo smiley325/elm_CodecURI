@@ -10,7 +10,7 @@ import CURI_Data.Util (chunksOf, strSplitAt)
 encodeHeaderAttWrapped_FirstLine : Int -> String -> Bool -> String -> String -> (String, String)        
 encodeHeaderAttWrapped_FirstLine valueSpace charsetLangPrefix encNeeded name value =
   if encNeeded 
-    then let chunkSize = (valueSpace `div` 3) - S.length charsetLangPrefix -- to prevent %dd tripling char space
+    then let chunkSize = (valueSpace - S.length charsetLangPrefix) `div` 3  -- to prevent %dd tripling char space
              (valuePrefix, valueSuffix) = strSplitAt chunkSize value
              firstLine = "\n" ++ name ++ "*0*=" ++ charsetLangPrefix ++ encodeURI valuePrefix
          in (firstLine, valueSuffix)    
