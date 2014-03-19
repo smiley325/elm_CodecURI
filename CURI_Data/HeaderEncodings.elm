@@ -11,9 +11,9 @@ import Maybe (Maybe, isJust)
 import CURI_Data.Util (fromMaybe, chunksOf)
 import CURI_Data.CharExtra (ord)
 
-{-| one line encoding of name value pair 
+{-| encodeHeaderAttUnwrapped  mbLang name value
 
-encodeHeaderAttUnwrapped  mbLang name value
+one line encoding of name value pair 
 -}
 encodeHeaderAttUnwrapped : Maybe String -> String -> String -> String
 encodeHeaderAttUnwrapped  mbLang name value =
@@ -26,9 +26,9 @@ encodeHeaderAttUnwrapped  mbLang name value =
         else name ++ "=\"" ++ value ++ "\""
 
         
-{-| encodeHeaderAttWrapped result begins with "\n" 
+{-| encodeHeaderAttWrapped lineTopSize mbLang name value
 
-encodeHeaderAttWrapped lineTopSize mbLang name value
+line-wrapped version for long param. values, result begins with newline
 -}       
 encodeHeaderAttWrapped : Int -> Maybe String -> String -> String -> String        
 encodeHeaderAttWrapped lineTopSize mbLang name value =
