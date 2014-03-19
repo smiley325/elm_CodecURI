@@ -1,8 +1,10 @@
-{ "version": "0.2.2"
+{ "version": "0.2.3"
 , "summary": "experimental library for url_encoding HTTP.send Get/Post requests"
-, "description": "CodecURI exposes Javascript's {encode|decode}URI[Component] plus mine's urlEncoded{Get|Post}. 
+, "description": "CodecURI exposes Javascript's {encode|decode}URI[Component] plus urlEncoded{Get|Post}. 
 
-You should add a --scripts flag to Native/CURI-runtime.js"
+HeaderEncodings exposes RFC2231(https://tools.ietf.org/html/rfc2231) conformant encodeHeaderAtt{Unwrapped|Wrapped}
+
+You should add a --scripts flag to elm_dependencies/griba2001-elm_CodecURI/N.N.N/Native/CURI-runtime.js"
 , "license": "BSD3"
 , "repository": "https://github.com/griba2001/elm_CodecURI.git"
 , "exposed-modules": ["CURI_Data.CodecURI", "CURI_Data.HeaderEncodings", "CURI_Data.CharExtra", "CURI_Data.Util"]
