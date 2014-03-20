@@ -10,7 +10,8 @@ import String as S
 import Maybe (Maybe, isJust)
 import CURI_Data.Util (fromMaybe)
 import CURI_Data.CharExtra (ord)
-import open CURI_Data.HeaderEncodingsPrivate
+import CURI_Data.HeaderEncodingsPrivate (encAttUnwrapped, encodeHeaderAttWrapped_FirstLine
+                                                        , encodeHeaderAttWrapped_ContinuationLines)
 
 {-| encodeHeaderAttUnwrapped  mbLang name value
 
@@ -21,11 +22,7 @@ encodeHeaderAttUnwrapped  mbLang name value =
   let isNotLatin1 ch = ord ch > 255
       encNeeded = S.any isNotLatin1 value
       lang = fromMaybe "" mbLang
-  in if encNeeded
-        then let v = concat <| intersperse "\'" ["utf-8", lang, encodeURI value]
-             in name ++ "*=" ++ v
-        else name ++ "=\"" ++ value ++ "\""
-
+  in encAttUnwrapped encNeeded lang name value
 -------------------------------------------        
 
 {-| encodeHeaderAttWrapped lineTopSize mbLang name value
@@ -37,10 +34,7 @@ encodeHeaderAttWrapped lineTopSize mbLang name value =
   let isNotLatin1 ch = ord ch > 255
       encNeeded = S.any isNotLatin1 value
       lang = fromMaybe "" mbLang
-      unwrapped = if encNeeded
-                    then let encodedValue = concat <| intersperse "\'" ["utf-8", lang, encodeURI value]
-                         in name ++ "*=" ++ encodedValue
-                    else name ++ "=\"" ++ value ++ "\""
+      unwrapped = encAttUnwrapped encNeeded lang name value
                     
   in if S.length unwrapped < lineTopSize
         then "\n" ++ unwrapped

@@ -1,4 +1,4 @@
-{ "version": "0.2.15"
+{ "version": "0.2.16"
 , "summary": "experimental library for url_encoding HTTP.send Get/Post requests"
 , "description": "CodecURI exposes Javascript's {encode|decode}URI[Component] and adds urlEncoded{Get|Post}. 
 

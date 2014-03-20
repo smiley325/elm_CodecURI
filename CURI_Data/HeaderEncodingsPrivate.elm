@@ -7,6 +7,13 @@ import String as S
 import CURI_Data.Util (chunksOf, strSplitAt)
 
 
+encAttUnwrapped : Bool ->  String -> String -> String -> String
+encAttUnwrapped encNeeded lang name value =
+  if encNeeded
+        then let v = concat <| intersperse "\'" ["utf-8", lang, encodeURI value]
+             in name ++ "*=" ++ v
+        else name ++ "=\"" ++ value ++ "\""
+
 encodeHeaderAttWrapped_FirstLine : Int -> String -> Bool -> String -> String -> (String, String)        
 encodeHeaderAttWrapped_FirstLine valueSpace charsetLangPrefix encNeeded name value =
   if encNeeded 
