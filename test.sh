@@ -1,5 +1,5 @@
 # $1 TestFileName
-# example run: . ./test.sh TestEncodeURI TestHeaderEnc
+# example run: . ./test.sh TestEncodeURI TestHeaderEnc TestTableAlign
 #
 # TestRemote requires a server at http://localhost:3000/echo-status that echoes the status parameter (GET and POST)
 #

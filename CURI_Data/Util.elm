@@ -32,5 +32,24 @@ chunksOf size str =
     in if S.isEmpty prefix 
          then Nothing
          else Just (prefix, suffix)
-  in unfoldr f str         
+  in unfoldr f str   
+  
+{-| transpose matrix of uneven rows
+-}
+transpose : [[a]] -> [[a]]
+transpose yss = case yss of
+  []              -> []
+  ([] :: xss)     -> transpose xss
+  ((x::xs) :: xss) -> let headMaybe li = case li of
+                              [] -> Nothing
+                              (z::_) -> Just z
+
+                          tailOrNil li = case li of
+                                  (_::zs) -> zs
+                                  [] -> []
+
+                          heads = justs <| map headMaybe xss
+                          tails = map tailOrNil xss
+                      in (x :: heads) :: (transpose (xs :: tails))
+  
   
