@@ -2,7 +2,7 @@ module CURI_Data.ElemTable where
 
 {-| Element matrix as tables 
 
-Rows lengths need not be equal
+Row lengths don't need to have equal length
 
 # Alignment
 @docs alignTableColumns
@@ -10,7 +10,7 @@ Rows lengths need not be equal
 
 import CURI_Data.Util (transpose)
 
-{-| alignTableColumns
+{-| alignTableColumns rows
 
 set element widths to max width in column
 -}
