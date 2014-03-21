@@ -30,26 +30,3 @@ Elm.Native.CodecURI.make = function(elm) {
      decodeURIComponent:decodeURIComponentFromString,
     };
 };
-// --------------------------------------------------------------------
-
-Elm.Native.CharExtra = {};
-Elm.Native.CharExtra.make = function(elm) {
-
-  elm.Native = elm.Native || {};
-  elm.Native.CharExtra = elm.Native.CharExtra || {};
-  if (elm.Native.CharExtra.values) return elm.Native.CharExtra.values;
-
-  var JS = Elm.JavaScript.make(elm);
-  
-  var chr = function( i) {
-    var x = new String( String.fromCharCode(i)) ;
-    x.isChar = true;
-    return x ;} ;
-    
-  var ord = function( c) {return c.charCodeAt(0) ;} ;
-
-  return elm.Native.CharExtra.values = 
-    {chr: chr, 
-     ord: ord,
-    };
-};

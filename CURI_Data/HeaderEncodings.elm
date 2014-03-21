@@ -9,7 +9,7 @@ import CURI_Data.CodecURI (encodeURI)
 import String as S
 import Maybe (Maybe, isJust)
 import CURI_Data.Util (fromMaybe)
-import CURI_Data.CharExtra (ord)
+import Char (toCode)
 import CURI_Data.HeaderEncodingsPrivate (encAttUnwrapped, encodeHeaderAttWrapped_FirstLine
                                                         , encodeHeaderAttWrapped_ContinuationLines)
 
@@ -19,7 +19,7 @@ one line encoding of name value pair
 -}
 encodeHeaderAttUnwrapped : Maybe String -> String -> String -> String
 encodeHeaderAttUnwrapped  mbLang name value =
-  let isNotLatin1 ch = ord ch > 255
+  let isNotLatin1 ch = toCode ch > 255
       encNeeded = S.any isNotLatin1 value
       lang = fromMaybe "" mbLang
   in encAttUnwrapped encNeeded lang name value
@@ -31,7 +31,7 @@ line-wrapped version for long param. values, result begins with newline
 -}       
 encodeHeaderAttWrapped : Int -> Maybe String -> String -> String -> String        
 encodeHeaderAttWrapped lineTopSize mbLang name value =
-  let isNotLatin1 ch = ord ch > 255
+  let isNotLatin1 ch = toCode ch > 255
       encNeeded = S.any isNotLatin1 value
       lang = fromMaybe "" mbLang
       unwrapped = encAttUnwrapped encNeeded lang name value
