@@ -2,7 +2,7 @@ module CURI_Data.ElemTable where
 
 {-| Element matrix as tables 
 
-Row lengths don't need to have equal length
+Rows don't need to have equal length
 
 # Alignment
 @docs alignTableColumns
@@ -18,9 +18,6 @@ alignTableColumns : [[Element]] -> [[Element]]
 alignTableColumns rows = case rows of
        [] -> []
        _ -> let cols = transpose rows
-                colWidths = cols |> map (maximum . (map widthOf))
-                
-                reformatRow : [Int] -> [Element] -> [Element]
-                reformatRow colWidths row = row `zip` (take (length row) colWidths) 
-                                                    |> map (\(elem, w) -> width w elem)
-            in rows |> map (reformatRow colWidths)
+                colWidths = cols |> map (maximum . map widthOf)
+
+            in rows |> map (\row -> zipWith width colWidths row)
