@@ -1,7 +1,7 @@
 module TestRemote where
 
 import Graphics.Input as Input
-import Http (..) 
+import Http (send, Response, Waiting, Success, Failure) 
 import String (trim)
 import JavaScript as JS
 import JavaScript (JSString)
