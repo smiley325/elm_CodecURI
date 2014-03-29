@@ -5,7 +5,7 @@ module CURI_Data.ElemTable where
 Rows don't need to have equal length
 
 # Alignment
-@docs alignTableColumns
+@docs tabulate, alignTableColumns
 -}
 
 import CURI_Data.Util (transpose)
