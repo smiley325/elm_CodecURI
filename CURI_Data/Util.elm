@@ -2,7 +2,7 @@ module CURI_Data.Util where
 {-| not so uncommmon utility routines
 
 # Miscellaneous
-@docs fromMaybe, unfoldr, chunksOf
+@docs fromMaybe, unfoldr, chunksOf, transpose
 -}
 import String as S
 

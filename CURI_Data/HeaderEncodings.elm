@@ -13,7 +13,7 @@ import Char (toCode)
 import CURI_Data.HeaderEncodingsPrivate (encAttUnwrapped, encodeHeaderAttWrapped_FirstLine
                                                         , encodeHeaderAttWrapped_ContinuationLines)
 
-{-| encodeHeaderAttUnwrapped  mbLang name value
+{-| `encodeHeaderAttUnwrapped  mbLang name value`
 
 one line encoding of name value pair 
 -}
@@ -25,7 +25,7 @@ encodeHeaderAttUnwrapped  mbLang name value =
   in encAttUnwrapped encNeeded lang name value
 -------------------------------------------        
 
-{-| encodeHeaderAttWrapped lineTopSize mbLang name value
+{-| `encodeHeaderAttWrapped lineTopSize mbLang name value`
 
 line-wrapped version for long param. values, result begins with newline
 -}       

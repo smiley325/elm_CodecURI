@@ -11,4 +11,4 @@ fmtRow w = map (container w 16 midRight . asText)
 myTable = [fmtRow 30 [1,2,3], 
            fmtRow 60 [5,6]]
 
-main = alignTableColumns myTable |> map (flow right) |> flow down
+main = tabulate myTable |> map (flow right) |> flow down

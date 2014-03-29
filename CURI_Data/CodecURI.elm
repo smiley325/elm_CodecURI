@@ -31,7 +31,7 @@ decodeURI = Native.CodecURI.decodeURI
 decodeURIComponent : String -> String
 decodeURIComponent = Native.CodecURI.decodeURIComponent
 
-{-| urlEncodedGet url qry headers shouldEncodeNames
+{-| `urlEncodedGet url qry headers shouldEncodeNames`
 
     url must not include a query part
     
@@ -57,7 +57,7 @@ urlEncodedGet url qry headers shouldEncodeNames =
                   )
         in request "GET" encUrlWithQry "" headers    
 
-{-| urlEncodedPost url qry headers shouldEncodeNames
+{-| `urlEncodedPost url qry headers shouldEncodeNames`
 
 for this to work, server side response must add the following headers 
 
