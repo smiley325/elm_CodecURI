@@ -2,7 +2,7 @@ module CURI_Data.Util where
 {-| not so uncommmon utility routines
 
 # Miscellaneous
-@docs fromMaybe, unfoldr, chunksOf, transpose
+@docs fromMaybe, headMaybe, tailMaybe, unfoldr, chunksOf, transpose
 -}
 import String as S
 
@@ -13,6 +13,16 @@ fromMaybe default mb =
     Just v -> v
     Nothing -> default
 
+headMaybe : [a] -> Maybe a    
+headMaybe li = case li of
+    [] -> Nothing
+    x::_ -> Just x
+
+tailMaybe : [a] -> Maybe [a]    
+tailMaybe li = case li of
+    [] -> Nothing
+    _::xs -> Just xs    
+    
 {-| missing in the List library -}
 unfoldr : (b -> Maybe (a, b)) -> b -> [a]
 unfoldr f b  =
@@ -40,16 +50,8 @@ transpose : [[a]] -> [[a]]
 transpose yss = case yss of
   []              -> []
   ([] :: xss)     -> transpose xss
-  ((x::xs) :: xss) -> let headMaybe li = case li of
-                              [] -> Nothing
-                              (z::_) -> Just z
-
-                          tailOrNil li = case li of
-                                  (_::zs) -> zs
-                                  [] -> []
-
-                          heads = justs <| map headMaybe xss
-                          tails = map tailOrNil xss
+  ((x::xs) :: xss) -> let heads = justs <| map headMaybe xss
+                          tails = map (fromMaybe [] . tailMaybe) xss
                       in (x :: heads) :: (transpose (xs :: tails))
   
   
