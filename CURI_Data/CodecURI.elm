@@ -49,7 +49,7 @@ urlEncodedGet url qry headers shouldEncodeNames =
                  then (encodeURI k, encodeURIComponent v)
                  else (k, encodeURIComponent v)
             qryNameValue (k, v) = k ++ "=" ++ v
-            encQry = concat <| intersperse "&" <| map (qryNameValue . encPair) qry
+            encQry = concat <| intersperse "&" <| map (encPair >> qryNameValue) qry
             encUrlWithQry = encodeURI url ++ 
                (if isEmpty qry 
                   then ""
@@ -73,7 +73,7 @@ urlEncodedPost url qry headers shouldEncodeNames =
                  then (encodeURI k, encodeURIComponent v)
                  else (k, encodeURIComponent v)
             qryNameValue (k, v) = k ++ "=" ++ v
-            encQry = concat <| intersperse "&" <| map (qryNameValue . encPair) qry
+            encQry = concat <| intersperse "&" <| map (encPair >> qryNameValue) qry
             headersWithEncType = ("Content-Type","application/x-www-form-urlencoded") :: headers
         in request "POST" (encodeURI url) encQry headersWithEncType    
 
